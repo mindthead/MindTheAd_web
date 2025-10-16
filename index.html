@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindTheAd</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #FFD700;
+    background-color: #0a0a0a;
+    background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+    scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top:0;
+    width:100%;
+    background: rgba(17,17,17,0.95);
+    padding:20px 0;
+    text-align:center;
+    z-index:100;
+}
+header h1 {font-size:2.5em; display:inline-block; margin-right:30px;}
+nav a {
+    margin: 0 10px;
+    text-decoration:none;
+    font-weight:bold;
+    color:#FFD700;
+    padding:5px 12px;
+    border-radius:12px;
+    transition:0.3s;
+}
+nav a.active {
+    background: #FFD700;
+    color:#111;
+}
+nav a:hover {transform:scale(1.1);}
+
+/* Szekciók */
+section {
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:50px 20px;
+    text-align:center;
+    background: radial-gradient(circle at top left, #222, #111, #0a0a0a);
+    color: #FFD700;
+    position: relative;
+}
+section:nth-child(even) {
+    background: radial-gradient(circle at bottom right, #333, #111, #0a0a0a);
+}
+
+/* Címek és szöveg */
+h2 {font-size:2.5em; margin-bottom:20px;}
+p {max-width:700px; line-height:1.6; font-size:1.1em;}
+
+/* Videók */
+iframe {
+    width:100%;
+    max-width:700px;
+    height:400px;
+    margin-top:20px;
+    border: 3px solid #FFD700;
+}
+
+/* Social logók */
+.social-icons {
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+.social-icons a {
+    margin: 0 15px;
+    transition:0.3s;
+}
+.social-icons a img {
+    width:40px;
+    height:40px;
+}
+.social-icons a:hover img {transform:scale(1.2);}
+
+/* Scroll animáció */
+.fade-in {
+    opacity:0;
+    transform:translateY(50px);
+    transition:all 1s ease-out;
+}
+.fade-in.visible {
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Footer */
+footer {
+    background:#111;
+    padding:20px;
+    text-align:center;
+}
+
+/* Down arrow */
+.down-arrow {
+    position:absolute;
+    bottom:20px;
+    font-size:2em;
+    cursor:pointer;
+    color:rgba(255,255,255,0.7);
+    animation: bounce 2s infinite;
+    transition:0.3s;
+}
+.down-arrow:hover {color: #FFD700; transform: scale(1.2);}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-15px);}
+    60% {transform: translateY(-7px);}
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>MindTheAd</h1>
+    <nav>
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#videos">Videos</a>
+        <a href="#polls">Polls</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <section id="home" class="fade-in">
+        <h2>Welcome to MindTheAd!</h2>
+        <p>Discover the hidden world behind advertising and social media. Here we explore how ads are designed to capture attention and influence people. Follow along for insights and analyses!</p>
+        <div class="down-arrow" onclick="scrollNext('about')">&#8595;</div>
+    </section>
+
+    <section id="about" class="fade-in">
+        <h2>About Me</h2>
+        <p>Hi, I'm a 15-year-old full of ambition, passionate about marketing, advertising, and social media. I love understanding why ads are designed the way they are and how they affect people. Through MindTheAd, I want to share my insights, learn constantly, and inspire others to see the world of advertising differently. My goal is to keep growing, exploring creative projects, and eventually use these skills to make meaningful contributions in marketing and media. I enjoy creating content, analyzing trends, and testing different marketing ideas in practice. This site is my personal lab and portfolio where I share everything I learn.</p>
+        <div class="down-arrow" onclick="scrollNext('videos')">&#8595;</div>
+    </section>
+
+    <section id="videos" class="fade-in">
+        <h2>Videos</h2>
+        <p>Check out my latest video analyses:</p>
+        <iframe src="https://www.youtube.com/embed/GA7zIEojr4c" allowfullscreen></iframe>
+        <div class="down-arrow" onclick="scrollNext('polls')">&#8595;</div>
+    </section>
+
+    <section id="polls" class="fade-in">
+        <h2>Polls & Surveys</h2>
+        <p>Here you will find my marketing surveys, graphs, and insights from social experiments. Stay tuned for updates!</p>
+        <div class="down-arrow" onclick="scrollNext('contact')">&#8595;</div>
+    </section>
+
+    <section id="contact" class="fade-in">
+        <h2>Contact / Social Media</h2>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/mind_the_ad/?__pwa=1" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com/@MindTheAd1" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 MindTheAd</p>
+</footer>
+
+<script>
+// Scroll animáció
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+    });
+}, appearOptions);
+faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+// Kiemelt menüpont
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 80;
+        if(pageYOffset >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Down arrow görgetés
+function scrollNext(id) {
+    const target = document.getElementById(id);
+    target.scrollIntoView({behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
