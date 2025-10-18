@@ -1,222 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MindTheAd</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-<style>
-* {margin:0; padding:0; box-sizing:border-box;}
-body {
-    font-family: 'Montserrat', sans-serif;
-    color: #FFD700;
-    background-color: #0a0a0a;
-    background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-    scroll-behavior: smooth;
-}
-
-/* Header */
-header {
-    position: fixed;
-    top:0;
-    width:100%;
-    background: rgba(17,17,17,0.95);
-    padding:20px 0;
-    text-align:center;
-    z-index:100;
-}
-header h1 {font-size:2.5em; display:inline-block; margin-right:30px;}
-nav a {
-    margin: 0 10px;
-    text-decoration:none;
-    font-weight:bold;
-    color:#FFD700;
-    padding:5px 12px;
-    border-radius:12px;
-    transition:0.3s;
-}
-nav a.active {
-    background: #FFD700;
-    color:#111;
-}
-nav a:hover {transform:scale(1.1);}
-
-/* Szekciók */
-section {
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    padding:50px 20px;
-    text-align:center;
-    background: radial-gradient(circle at top left, #222, #111, #0a0a0a);
-    color: #FFD700;
-    position: relative;
-}
-section:nth-child(even) {
-    background: radial-gradient(circle at bottom right, #333, #111, #0a0a0a);
-}
-
-/* Címek és szöveg */
-h2 {font-size:2.5em; margin-bottom:20px;}
-p {max-width:700px; line-height:1.6; font-size:1.1em;}
-
-/* Videók */
-iframe {
-    width:100%;
-    max-width:700px;
-    height:400px;
-    margin-top:20px;
-    border: 3px solid #FFD700;
-}
-
-/* Social logók */
-.social-icons {
-    display:flex;
-    justify-content:center;
-    margin-top:20px;
-}
-.social-icons a {
-    margin: 0 15px;
-    transition:0.3s;
-}
-.social-icons a img {
-    width:40px;
-    height:40px;
-}
-.social-icons a:hover img {transform:scale(1.2);}
-
-/* Scroll animáció */
-.fade-in {
-    opacity:0;
-    transform:translateY(50px);
-    transition:all 1s ease-out;
-}
-.fade-in.visible {
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* Footer */
-footer {
-    background:#111;
-    padding:20px;
-    text-align:center;
-}
-
-/* Down arrow */
-.down-arrow {
-    position:absolute;
-    bottom:20px;
-    font-size:2em;
-    cursor:pointer;
-    color:rgba(255,255,255,0.7);
-    animation: bounce 2s infinite;
-    transition:0.3s;
-}
-.down-arrow:hover {color: #FFD700; transform: scale(1.2);}
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(-15px);}
-    60% {transform: translateY(-7px);}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindTheAd</title>
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica', sans-serif;
+      background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
+      color: #fff;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      background-color: #000;
+    }
+    header h1 {
+      color: #FFD700;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 10px 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 15px;
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+    nav a.active, nav a:hover {
+      background-color: #FFD700;
+      color: #000;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .fade-text {
+      max-height: 150px;
+      overflow: hidden;
+      position: relative;
+      transition: max-height 1s ease;
+      line-height: 1.6;
+    }
+    .fade-text::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: linear-gradient(to top, #1a1a1a, transparent);
+    }
+    .btn-yellow {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 25px;
+      background: #FFD700;
+      color: #000;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+    .btn-yellow:hover {
+      transform: scale(1.05);
+    }
+    .charts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .socials {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .socials a img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s;
+    }
+    .socials a img:hover {
+      transform: scale(1.2);
+    }
+    .arrow {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      animation: bounce 1s infinite;
+    }
+    @keyframes bounce {
+      0%,100% {transform: translateY(0);}
+      50% {transform: translateY(10px);}
+    }
+  </style>
 </head>
 <body>
-
-<header>
-    <h1>MindTheAd</h1>
+  <header>
+    <h1>Welcome to MindTheAd</h1>
     <nav>
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#videos">Videos</a>
-        <a href="#polls">Polls</a>
-        <a href="#contact">Contact</a>
+      <a href="#about" class="active">Home</a>
+      <a href="#scroll-addiction">Scroll Addiction</a>
+      <a href="#research">Research</a>
+      <a href="#videos">Videos</a>
     </nav>
-</header>
+  </header>
 
-<main>
-    <section id="home" class="fade-in">
-        <h2>Welcome to MindTheAd!</h2>
-        <p>Discover the hidden world behind advertising and social media. Here we explore how ads are designed to capture attention and influence people. Follow along for insights and analyses!</p>
-        <div class="down-arrow" onclick="scrollNext('about')">&#8595;</div>
-    </section>
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      I am a young ambitious person passionate about understanding how advertising works. 
+      Through MindTheAd, I want to reveal the mechanisms behind ads, study marketing strategies, 
+      and learn new techniques. My goal is to educate myself and others on media literacy and 
+      how social media shapes behavior.
+    </p>
+  </section>
 
-    <section id="about" class="fade-in">
-        <h2>About Me</h2>
-        <p>Hi, I'm a 15-year-old full of ambition, passionate about marketing, advertising, and social media. I love understanding why ads are designed the way they are and how they affect people. Through MindTheAd, I want to share my insights, learn constantly, and inspire others to see the world of advertising differently. My goal is to keep growing, exploring creative projects, and eventually use these skills to make meaningful contributions in marketing and media. I enjoy creating content, analyzing trends, and testing different marketing ideas in practice. This site is my personal lab and portfolio where I share everything I learn.</p>
-        <div class="down-arrow" onclick="scrollNext('videos')">&#8595;</div>
-    </section>
+  <section id="scroll-addiction">
+    <h2>Why can't we stop scrolling?</h2>
+    <div class="fade-text">
+      <p>Have you ever been bored and decided to sit down and scroll on Instagram for a bit? You scroll through videos, and suddenly an hour has passed. This is scroll addiction, an endless loop you can't seem to break. Let's break down how social media affects us and why we stay stuck in this vicious cycle for so long.</p>
+      <p>First of all, the app isn't your enemy, but it is designed to keep you inside. As we scroll, our brain treats every new post as a small reward. Dopamine is released — the same chemical that activates when something exciting or unpredictable happens. This variable reward system is what social media exploits perfectly: you never know if the next scroll will show something boring or something brilliantly interesting. It's this uncertainty that keeps us hooked.</p>
+      <p>A 2023 study found that among 12–17-year-olds in the U.S., 50.4% spend more than 4 hours daily on screens, and 22.8% spend 3 hours a day. Think about how many of those four hours started with “I'll just check my friends’ posts for five minutes.”</p>
+      <p>Another factor is how much social media influences us. When we open an app and see that those we follow are on a perfect vacation, posted a great assignment, or are just reading in a café — it can crush our self-esteem and self-worth...</p>
+      <!-- Ide illeszd a teljes szöveget -->
+    </div>
+    <button id="expand-text" class="btn-yellow">Read more ↓</button>
+    <div class="charts">
+      <canvas id="chart1"></canvas>
+      <canvas id="chart2"></canvas>
+    </div>
+  </section>
 
-    <section id="videos" class="fade-in">
-        <h2>Videos</h2>
-        <p>Check out my latest video analyses:</p>
-        <iframe src="https://www.youtube.com/embed/GA7zIEojr4c" allowfullscreen></iframe>
-        <div class="down-arrow" onclick="scrollNext('polls')">&#8595;</div>
-    </section>
+  <section id="research">
+    <h2>Research</h2>
+    <p>Here you can add articles, polls, and studies about marketing and social media.</p>
+  </section>
 
-    <section id="polls" class="fade-in">
-        <h2>Polls & Surveys</h2>
-        <p>Here you will find my marketing surveys, graphs, and insights from social experiments. Stay tuned for updates!</p>
-        <div class="down-arrow" onclick="scrollNext('contact')">&#8595;</div>
-    </section>
+  <section id="videos">
+    <h2>Videos</h2>
+    <p>Check my content on YouTube:</p>
+    <div class="socials">
+      <a href="https://www.youtube.com/@MindTheAd1" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
+      </a>
+      <a href="https://www.instagram.com/mind_the_ad/?__pwa=1" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+      </a>
+    </div>
+  </section>
 
-    <section id="contact" class="fade-in">
-        <h2>Contact / Social Media</h2>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/mind_the_ad/?__pwa=1" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-            </a>
-            <a href="https://www.youtube.com/@MindTheAd1" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
-            </a>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <p>&copy; 2025 MindTheAd</p>
-</footer>
-
-<script>
-// Scroll animáció
-const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer){
-    entries.forEach(entry => {
-        if(!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+  <script>
+    const btn = document.getElementById('expand-text');
+    const fadeText = document.querySelector('.fade-text');
+    btn.addEventListener('click', () => {
+      if (fadeText.style.maxHeight) {
+        fadeText.style.maxHeight = null;
+        btn.textContent = 'Read more ↓';
+      } else {
+        fadeText.style.maxHeight = fadeText.scrollHeight + 'px';
+        btn.textContent = 'Read less ↑';
+      }
     });
-}, appearOptions);
-faders.forEach(fader => { appearOnScroll.observe(fader); });
 
-// Kiemelt menüpont
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('nav a');
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 80;
-        if(pageYOffset >= sectionTop) {
-            current = section.getAttribute('id');
-        }
+    const ctx1 = document.getElementById('chart1').getContext('2d');
+    const chart1 = new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: ['12-17yo 4+ hrs', '12-17yo 3 hrs'],
+        datasets: [{
+          label: 'Daily screen time (%)',
+          data: [50.4, 22.8],
+          backgroundColor: '#FFD700'
+        }]
+      },
+      options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
     });
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if(link.getAttribute('href') === '#' + current) {
-            link.classList.add('active');
-        }
+
+    const ctx2 = document.getElementById('chart2').getContext('2d');
+    const chart2 = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Girls avg hrs', 'Boys avg hrs'],
+        datasets: [{
+          label: 'Social media hours/day',
+          data: [5.3, 4.4],
+          backgroundColor: '#FFD700'
+        }]
+      },
+      options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
     });
-});
-
-// Down arrow görgetés
-function scrollNext(id) {
-    const target = document.getElementById(id);
-    target.scrollIntoView({behavior:'smooth'});
-}
-</script>
-
+  </script>
 </body>
 </html>
